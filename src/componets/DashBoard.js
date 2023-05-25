@@ -16,7 +16,9 @@ function DashBoard() {
       const response = await axios.get(
         `https://blogapp-0bfm.onrender.com/api/posts/${localStorage.getItem("username")}`,
         {
-          withCredentials: true,
+          headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
         }
       );
       setPosts(response.data.data);
@@ -34,7 +36,9 @@ function DashBoard() {
       const response = await axios.get(
         `https://blogapp-0bfm.onrender.com/api/posts/saved/${localStorage.getItem("username")}`,
         {
-          withCredentials: true,
+          headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
         }
       );
       setPosts(response.data.data);
@@ -52,7 +56,9 @@ function DashBoard() {
       const response = await axios.get(
         `https://blogapp-0bfm.onrender.com/api/posts/liked/${localStorage.getItem("username")}`,
         {
-          withCredentials: true,
+          headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
         }
       );
       setPosts(response.data.data);
