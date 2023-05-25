@@ -15,7 +15,7 @@ function Signup() {
   function Register(e) {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/api/users/register", {
+      .post("https://blogapp-0bfm.onrender.com/api/users/register", {
         username: username,
         password: password,
       })
