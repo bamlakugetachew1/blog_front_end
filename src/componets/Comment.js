@@ -21,7 +21,7 @@ function Comment(props) {
   async function getcomments() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/comment/${props.postid}`
+        `https://blogapp-0bfm.onrender.com/api/posts/comment/${props.postid}`
       );
       setdata(response.data.data);
       changeCommentSize(response.data.length);
@@ -34,7 +34,7 @@ function Comment(props) {
     if (localStorage.getItem("userid")) {
     axios
       .post(
-        "http://localhost:4000/api/posts/comment/create",
+        "https://blogapp-0bfm.onrender.com/api/posts/comment/create",
         {
           comment: comments,
           commenterid: localStorage.getItem("userid"),
