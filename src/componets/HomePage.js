@@ -15,7 +15,7 @@ function HomePage() {
   async function getallpost() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/getall/${page}`
+        `https://blogapp-0bfm.onrender.com/api/posts/getall/${page}`
       );
       let temprray = [...posts];
       for (let i = 0; i < response.data.data.length; i++) {
@@ -31,7 +31,7 @@ function HomePage() {
   async function getallpostLength() {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/posts/lengths"
+        "https://blogapp-0bfm.onrender.com/api/posts/lengths"
       );
       setPostlength(response.data.postlength);
     } catch (err) {
