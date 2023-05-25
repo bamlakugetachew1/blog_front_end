@@ -8,7 +8,7 @@ function NavBar() {
   const navigate = useNavigate();
   function  removeCookie(){
     axios
-    .get("http://localhost:4000/api/users/logout",{withCredentials: true})
+    .get("https://blogapp-0bfm.onrender.com/api/users/logout",{withCredentials: true})
     .then(function (response) {
       console.log(response);
     })
