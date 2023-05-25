@@ -65,7 +65,9 @@ function EditPost() {
           summery: summery,
           content: value,
         },
-        { withCredentials: true }
+        {headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },}
       )
       .then(function (response) {
         navigate("/dashboard");
