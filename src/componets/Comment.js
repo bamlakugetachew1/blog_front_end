@@ -40,7 +40,9 @@ function Comment(props) {
           commenterid: localStorage.getItem("userid"),
           postid: props.postid,
         },
-        { withCredentials: true }
+        {headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        }, }
       )
       .then(function (response) {
         setComment("");
