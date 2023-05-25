@@ -6,18 +6,6 @@ import { useNavigate } from "react-router-dom";
 function NavBar() {
   const { isloogedin, changeLog } = useContext(BlogContext);
   const navigate = useNavigate();
-  function  removeCookie(){
-    axios
-    .get("https://blogapp-0bfm.onrender.com/api/users/logout",{headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },})
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
   function logout() {
     localStorage.removeItem("isloogedin");
     localStorage.removeItem("userid");
@@ -25,7 +13,6 @@ function NavBar() {
     localStorage.removeItem("accessToken");
 
     changeLog();
-    removeCookie();
     navigate('/');
   }
   return (
