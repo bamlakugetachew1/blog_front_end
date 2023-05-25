@@ -8,7 +8,9 @@ function NavBar() {
   const navigate = useNavigate();
   function  removeCookie(){
     axios
-    .get("https://blogapp-0bfm.onrender.com/api/users/logout",{withCredentials: true})
+    .get("https://blogapp-0bfm.onrender.com/api/users/logout",{headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },})
     .then(function (response) {
       console.log(response);
     })
@@ -20,6 +22,8 @@ function NavBar() {
     localStorage.removeItem("isloogedin");
     localStorage.removeItem("userid");
     localStorage.removeItem("username");
+    localStorage.removeItem("accessToken");
+
     changeLog();
     removeCookie();
     navigate('/');
