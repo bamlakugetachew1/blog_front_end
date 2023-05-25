@@ -14,7 +14,7 @@ function DashBoard() {
     async function getpostbyauthor() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/${localStorage.getItem("username")}`,
+        `https://blogapp-0bfm.onrender.com/api/posts/${localStorage.getItem("username")}`,
         {
           withCredentials: true,
         }
@@ -32,7 +32,7 @@ function DashBoard() {
   async function getsavedpostbyauthor() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/saved/${localStorage.getItem("username")}`,
+        `https://blogapp-0bfm.onrender.com/api/posts/saved/${localStorage.getItem("username")}`,
         {
           withCredentials: true,
         }
@@ -50,7 +50,7 @@ function DashBoard() {
   async function getlikedpostbyauthor() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/liked/${localStorage.getItem("username")}`,
+        `https://blogapp-0bfm.onrender.com/api/posts/liked/${localStorage.getItem("username")}`,
         {
           withCredentials: true,
         }
