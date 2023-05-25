@@ -57,7 +57,9 @@ function CreatePost() {
       formData.append("postimages", file);
       axios
         .post("https://blogapp-0bfm.onrender.com/api/posts/uploadimage", formData, {
-          withCredentials: true,
+          headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
         })
         .then((res) => {
           if (res.data.message === "success") {
@@ -67,7 +69,9 @@ function CreatePost() {
               summery: summery,
               content:value,
               imageurl:res.data.imageurl
-            },{withCredentials: true})
+            },{headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },})
             .then(function (response) {
              navigate('/');
              console.log(response)
