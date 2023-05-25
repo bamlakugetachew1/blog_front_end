@@ -24,15 +24,13 @@ function LoginPage() {
           username: username,
           password: password,
         },
-        {
-          withCredentials: true,
-        }
       )
       .then(function (response) {
         if (response.data.message === "success") {
           localStorage.setItem("isloogedin", true);
           localStorage.setItem("userid", response.data.userid);
           localStorage.setItem("username", response.data.username);
+          localStorage.setItem("accessToken",response.data.accessToken);
           changeLog();
           const { redirectTo } = queryString.parse(window.location.search);
           if (redirectTo === null || redirectTo === undefined) {
