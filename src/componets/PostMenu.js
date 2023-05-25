@@ -51,7 +51,7 @@ function PostMenu(props) {
   async function getlikescount(id) {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/likecount/${id}`
+        `https://blogapp-0bfm.onrender.com/api/posts/likecount/${id}`
       );
       setLikes(response.data.length);
       checkaleradyliked(response.data.clamper, localStorage.getItem("userid"));
@@ -63,7 +63,7 @@ function PostMenu(props) {
   async function savedcontent(id) {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/users/saved/${id}`
+        `https://blogapp-0bfm.onrender.com/api/users/saved/${id}`
       );
       if (response.data.user.includes(props.id)) {
         setSaved(true);
@@ -97,7 +97,7 @@ function PostMenu(props) {
   const LoveBlogs = (id) => {
     if (localStorage.getItem("userid")) {
        axios.post(
-          "http://localhost:4000/api/posts/like",
+          "https://blogapp-0bfm.onrender.com/api/posts/like",
           {
             postid: id,
             commenterid: localStorage.getItem("userid"),
@@ -121,7 +121,7 @@ function PostMenu(props) {
     if (localStorage.getItem("userid")) {
       axios
         .post(
-          "http://localhost:4000/api/posts/save",
+          "https://blogapp-0bfm.onrender.com/api/posts/save",
           {
             postid: id,
             commenterid: localStorage.getItem("userid"),
