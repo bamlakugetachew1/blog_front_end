@@ -102,7 +102,9 @@ function PostMenu(props) {
             postid: id,
             commenterid: localStorage.getItem("userid"),
           },
-          { withCredentials: true }
+          { headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          }, }
         )
         .then(function (response) {
           console.log(response);
@@ -126,7 +128,9 @@ function PostMenu(props) {
             postid: id,
             commenterid: localStorage.getItem("userid"),
           },
-          { withCredentials: true }
+          { headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          }, }
         )
         .then(function (response) {
           console.log(response);
