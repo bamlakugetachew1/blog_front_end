@@ -26,7 +26,7 @@ function SinglePost() {
   async function getsinglepost() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/singlepost/${id}`
+        `https://blogapp-0bfm.onrender.com/api/posts/singlepost/${id}`
       );
       setSinglepost(response.data.data);
       estimatetime(response.data.data.content);
