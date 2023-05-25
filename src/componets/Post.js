@@ -27,7 +27,7 @@ function Post({
     try {
       const id = _id + " " + localStorage.getItem("userid");
       const response = await axios.delete(
-        `http://localhost:4000/api/posts/${id}`,{withCredentials: true},
+        `https://blogapp-0bfm.onrender.com/api/posts/${id}`,{withCredentials: true},
       );
       if (response.data.data === "deleted") {
         changeRetrive();
