@@ -46,7 +46,7 @@ function EditPost() {
   async function getsinglepost() {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/posts/singlepost/${edit}`
+        `https://blogapp-0bfm.onrender.com/api/posts/singlepost/${edit}`
       );
       setValue(response.data.data.content);
       setTitle(response.data.data.title);
@@ -59,7 +59,7 @@ function EditPost() {
   function uploadImages(e) {
     e.preventDefault();
     axios
-      .patch(`http://localhost:4000/api/posts/${edit}`,
+      .patch(`https://blogapp-0bfm.onrender.com/api/posts/${edit}`,
         {
           title: title,
           summery: summery,
