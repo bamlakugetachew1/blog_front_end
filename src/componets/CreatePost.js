@@ -56,13 +56,13 @@ function CreatePost() {
       const formData = new FormData();
       formData.append("postimages", file);
       axios
-        .post("http://localhost:4000/api/posts/uploadimage", formData, {
+        .post("https://blogapp-0bfm.onrender.com/api/posts/uploadimage", formData, {
           withCredentials: true,
         })
         .then((res) => {
           if (res.data.message === "success") {
             axios
-            .post("http://localhost:4000/api/posts/create", {
+            .post("https://blogapp-0bfm.onrender.com/api/posts/create", {
               title: title,
               summery: summery,
               content:value,
