@@ -39,10 +39,9 @@ function Comment(props) {
           comment: comments,
           commenterid: localStorage.getItem("userid"),
           postid: props.postid,
-        },
-        {headers: {
+        },{headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        }, }
+        },}
       )
       .then(function (response) {
         setComment("");
