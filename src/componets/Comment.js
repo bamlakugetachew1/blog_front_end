@@ -31,13 +31,13 @@ function Comment(props) {
   }
 
   function comment() {
-    if (localStorage.getItem("userid")) {
+    if (localStorage.getItem("username")) {
     axios
       .post(
         "https://blogapp-0bfm.onrender.com/api/posts/comment/create",
         {
           comment: comments,
-          commenterid: localStorage.getItem("userid"),
+          commenterid: localStorage.getItem("username"),
           postid: props.postid,
         },{headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -82,7 +82,7 @@ function Comment(props) {
         return (
           <div key={data._id} className="mt-2 font-body border border-solid border-gray-200 shadow-sm p-3 mb-2">
             <div className="flex gap-3 mb-2">
-              <h3>Bamlaku</h3>
+              <h3>{data.commenterid}</h3>
               <p>{new Date(data.createdAt).toLocaleDateString()}</p>
             </div>
             <div>
