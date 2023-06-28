@@ -11,6 +11,7 @@ import {
   FaSave,
   FaComment,
   FaCopy,
+  FaShare,
 } from "react-icons/fa";
 import AlertDialogSlide from "./SocialShare";
 function PostMenu(props) {
@@ -160,7 +161,7 @@ function PostMenu(props) {
       {copied && (
         <p className="flex justify-end font-body text-red-500">Link Copied</p>
       )}
-       <AlertDialogSlide url={props.url} title={props.title}/>
+      <AlertDialogSlide url={props.url} title={props.title} />
       <div className="text-gray-400 text-xl mt-5 border border-l-0 border-r-0 border-solid px-2 py-3 flex justify-between">
         <div className="flex gap-7">
           <div className="flex gap-1">
