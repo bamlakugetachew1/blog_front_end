@@ -170,7 +170,7 @@ function PostMenu(props) {
               url: props.url,
               title: "choose site to share",
             }}
-            disableNative={false}
+            disableNative={true}
             sites={[
               "facebook",
               "telegram",
