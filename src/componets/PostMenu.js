@@ -10,10 +10,9 @@ import {
   FaHeart,
   FaSave,
   FaComment,
-  FaCopy,
-  FaShare
+  FaShare,
 } from "react-icons/fa";
-import AlertDialogSlide from "./SocialShare";
+import { RWebShare } from "react-web-share";
 function PostMenu(props) {
   const [play, setPlay] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -21,13 +20,9 @@ function PostMenu(props) {
   const [bgcolor, setBgclor] = useState(false);
   const [saved, setSaved] = useState(false);
   const [visibility, setVisibility] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const { commentnumber, changopenpopuptoTrue } = useContext(BlogContext);
+  const { commentnumber } = useContext(BlogContext);
   const navigate = useNavigate();
   const prevLocation = window.location.href;
-  const openpopup = () => {
-    changopenpopuptoTrue();
-  };
   const popupCloseHandler = (e) => {
     setVisibility(e);
   };
@@ -47,10 +42,6 @@ function PostMenu(props) {
     if (data.includes(id)) {
       setBgclor(true);
     }
-  }
-  function copy(text) {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
   }
 
   async function getlikescount(id) {
@@ -158,10 +149,6 @@ function PostMenu(props) {
   }
   return (
     <div>
-      {copied && (
-        <p className="flex justify-end font-body text-red-500">Link Copied</p>
-      )}
-      <AlertDialogSlide url={props.url} title={props.title} />
       <div className="text-gray-400 text-xl mt-5 border border-l-0 border-r-0 border-solid px-2 py-3 flex justify-between">
         <div className="flex gap-7">
           <div className="flex gap-1">
@@ -177,6 +164,29 @@ function PostMenu(props) {
           </div>
         </div>
         <div className="flex gap-7">
+          <RWebShare
+            data={{
+              text: props.title,
+              url: props.url,
+              title: "choose site to share",
+            }}
+            disableNative={true}
+            sites={[
+              "facebook",
+              "telegram",
+              "twitter",
+              "whatsapp",
+              "reddit",
+              "linkedin",
+              "mail",
+              "copy",
+              "vk",
+              "okru",
+            ]}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <FaShare />
+          </RWebShare>
           <FaSave
             className={`${saved ? "text-black" : ""}`}
             onClick={() => SaveBlogs(props.id)}
@@ -185,10 +195,6 @@ function PostMenu(props) {
             {!play && <FaPlay onClick={() => speechHandler(props.content)} />}
             {play && <FaPause onClick={() => speechHandlerPause()} />}
           </div>
-          <FaCopy
-            className={`${copied ? "text-black" : ""}`}
-            onClick={() => copy(window.location.href)}
-          />
         </div>
         <CustomPopup onClose={popupCloseHandler} show={visibility}>
           <h3>Log in to complete action</h3>

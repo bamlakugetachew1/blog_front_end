@@ -1,11 +1,4 @@
-import {
-  FaPlay,
-  FaHeart,
-  FaSave,
-  FaComment,
-  FaCopy,
-  FaShare,
-} from "react-icons/fa";
+import { FaPlay, FaHeart, FaSave, FaComment, FaShare } from "react-icons/fa";
 function SinglepageSkeleton() {
   return (
     <div className="animate-pulse">
@@ -21,9 +14,9 @@ function SinglepageSkeleton() {
           <FaComment className="w-7 h-7  text-gray-200 dark:text-gray-700" />
         </div>
         <div className="flex gap-7">
+          <FaShare className="w-7 h-7  text-gray-200 dark:text-gray-700" />
           <FaSave className="w-7 h-7  text-gray-200 dark:text-gray-700" />
           <FaPlay className="w-7 h-7  text-gray-200 dark:text-gray-700" />
-          <FaCopy className="w-7 h-7  text-gray-200 dark:text-gray-700" />
         </div>
       </div>
       <div className="h-56 w-full bg-gray-200  dark:bg-gray-700  mb-2"></div>
