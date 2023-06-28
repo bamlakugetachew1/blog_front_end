@@ -11,6 +11,7 @@ import {
   FaSave,
   FaComment,
   FaCopy,
+  FaShare
 } from "react-icons/fa";
 import AlertDialogSlide from "./SocialShare";
 function PostMenu(props) {
