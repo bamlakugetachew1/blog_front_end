@@ -40,6 +40,14 @@ export default function AlertDialogSlide(props) {
   const handleClose = () => {
     changopenpopuptoFalse();
   };
+  const myPromise = new Promise((resolve, reject) => {
+    let cms = "Opendialog";
+    if (cms === "Opendialog") {
+      resolve("Success: The promise has successfully resolved!");
+    } else {
+      reject("Failure: The promise has failed!");
+    }
+  });
   return (
     <div>
       <Dialog
@@ -64,7 +72,20 @@ export default function AlertDialogSlide(props) {
               >
                 <FacebookIcon size={32} round />
               </FacebookShareButton>
-              <TelegramShareButton url={props.url} title={props.title}>
+              <TelegramShareButton
+                beforeOnClick={() => {
+                  myPromise.then(
+                    (result) => {
+                      console.log(result); // Prints "Success: The promise has successfully resolved!"
+                    },
+                    (error) => {
+                      console.log(error); // Never executes because the Promise is resolved
+                    }
+                  );
+                }}
+                url={props.url}
+                title={props.title}
+              >
                 <TelegramIcon size={32} round />
               </TelegramShareButton>
               <LinkedinShareButton url={props.url} title={props.title}>

@@ -11,7 +11,7 @@ import {
   FaSave,
   FaComment,
   FaCopy,
-  FaShare,
+  FaShare
 } from "react-icons/fa";
 import AlertDialogSlide from "./SocialShare";
 function PostMenu(props) {
@@ -177,7 +177,6 @@ function PostMenu(props) {
           </div>
         </div>
         <div className="flex gap-7">
-          <FaShare onClick={openpopup} />
           <FaSave
             className={`${saved ? "text-black" : ""}`}
             onClick={() => SaveBlogs(props.id)}
