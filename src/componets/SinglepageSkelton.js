@@ -21,7 +21,7 @@ function SinglepageSkeleton() {
           <FaComment className="w-7 h-7  text-gray-200 dark:text-gray-700" />
         </div>
         <div className="flex gap-7">
-          <FaShare className="w-7 h-7  text-gray-200 dark:text-gray-700" />
+          // <FaShare className="w-7 h-7  text-gray-200 dark:text-gray-700" />
           <FaSave className="w-7 h-7  text-gray-200 dark:text-gray-700" />
           <FaPlay className="w-7 h-7  text-gray-200 dark:text-gray-700" />
           <FaCopy className="w-7 h-7  text-gray-200 dark:text-gray-700" />
