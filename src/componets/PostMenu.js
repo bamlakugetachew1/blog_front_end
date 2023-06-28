@@ -177,7 +177,7 @@ function PostMenu(props) {
           </div>
         </div>
         <div className="flex gap-7">
-          <FaShare onClick={openpopup} />
+          // <FaShare onClick={openpopup} />
           <FaSave
             className={`${saved ? "text-black" : ""}`}
             onClick={() => SaveBlogs(props.id)}
