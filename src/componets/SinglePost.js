@@ -14,7 +14,7 @@ function SinglePost() {
   const [loading, Setloading] = useState(true);
   const [readtime, setReadtime] = useState(0);
   useEffect(() => {
-      getsinglepost();
+    getsinglepost();
   }, []);
 
   function estimatetime(data) {
@@ -38,7 +38,7 @@ function SinglePost() {
 
   return (
     <div>
-      { !loading &&
+      {!loading && (
         <div>
           <div className="mb-5 text-left">
             <h3 className="font-bold font-body text-lg">{singlepost.title}</h3>
@@ -49,7 +49,12 @@ function SinglePost() {
                 {date.format(new Date(singlepost.createdAt), "MMM DD YYYY")}
               </p>
             </div>
-            <PostMenu content={singlepost.content} id={id} />
+            <PostMenu
+              content={singlepost.content}
+              id={id}
+              title={singlepost.title}
+              url={window.location.href}
+            />
           </div>
           <div>
             <img
@@ -67,10 +72,8 @@ function SinglePost() {
           </div>
           <Comment postid={id} />
         </div>
-      }
-      {
-        loading && <SinglepageSkeleton/>
-      }
+      )}
+      {loading && <SinglepageSkeleton />}
     </div>
   );
 }
