@@ -5,6 +5,13 @@ export const BlogProvider = ({ children }) => {
   const [isloogedin, setIsloogedin] = useState(initalstate);
   const [commentnumber, changeNumberofcomment] = useState(0);
   const [retriveauthor, SetRetriveAuthor] = useState(false);
+  const [openpopup, setopenpopup] = useState(false);
+  const changopenpopuptoTrue = () => {
+    return setopenpopup(true);
+  };
+  const changopenpopuptoFalse = () => {
+    return setopenpopup(false);
+  };
   const changeLog = () => {
     return setIsloogedin(!isloogedin);
   };
@@ -20,6 +27,9 @@ export const BlogProvider = ({ children }) => {
         isloogedin,
         commentnumber,
         retriveauthor,
+        openpopup,
+        changopenpopuptoTrue,
+        changopenpopuptoFalse,
         changeRetrive,
         changeCommentSize,
         changeLog,

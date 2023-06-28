@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext} from "react";
+import { useState, useEffect, useContext } from "react";
 import CustomPopup from "../utils/CustomPopup";
 import handleClick from "../utils/handleClick";
 import BlogContext from "../store/blogstore";
@@ -12,6 +12,7 @@ import {
   FaComment,
   FaCopy,
 } from "react-icons/fa";
+import AlertDialogSlide from "./SocialShare";
 function PostMenu(props) {
   const [play, setPlay] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -20,9 +21,12 @@ function PostMenu(props) {
   const [saved, setSaved] = useState(false);
   const [visibility, setVisibility] = useState(false);
   const [copied, setCopied] = useState(false);
-  const {commentnumber} = useContext(BlogContext);
+  const { commentnumber, changopenpopuptoTrue } = useContext(BlogContext);
   const navigate = useNavigate();
   const prevLocation = window.location.href;
+  const openpopup = () => {
+    changopenpopuptoTrue();
+  };
   const popupCloseHandler = (e) => {
     setVisibility(e);
   };
@@ -96,15 +100,18 @@ function PostMenu(props) {
 
   const LoveBlogs = (id) => {
     if (localStorage.getItem("userid")) {
-       axios.post(
+      axios
+        .post(
           "https://blogapp-0bfm.onrender.com/api/posts/like",
           {
             postid: id,
             commenterid: localStorage.getItem("userid"),
           },
-          { headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          }, }
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
         )
         .then(function (response) {
           console.log(response);
@@ -128,9 +135,11 @@ function PostMenu(props) {
             postid: id,
             commenterid: localStorage.getItem("userid"),
           },
-          { headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          }, }
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
         )
         .then(function (response) {
           console.log(response);
@@ -143,14 +152,15 @@ function PostMenu(props) {
       setVisibility(true);
     }
   };
-  function logfrompopup(){
-   navigate(`/login?redirectTo=${prevLocation}`);
+  function logfrompopup() {
+    navigate(`/login?redirectTo=${prevLocation}`);
   }
   return (
     <div>
       {copied && (
         <p className="flex justify-end font-body text-red-500">Link Copied</p>
       )}
+       <AlertDialogSlide url={props.url} title={props.title}/>
       <div className="text-gray-400 text-xl mt-5 border border-l-0 border-r-0 border-solid px-2 py-3 flex justify-between">
         <div className="flex gap-7">
           <div className="flex gap-1">
@@ -161,11 +171,12 @@ function PostMenu(props) {
             <span className="text-sm">{likes}</span>
           </div>
           <div className="flex gap-1">
-          <FaComment onClick={() => handleClick("comment")} />
-          <span className="text-sm">{commentnumber}</span>
+            <FaComment onClick={() => handleClick("comment")} />
+            <span className="text-sm">{commentnumber}</span>
           </div>
         </div>
         <div className="flex gap-7">
+          <FaShare onClick={openpopup} />
           <FaSave
             className={`${saved ? "text-black" : ""}`}
             onClick={() => SaveBlogs(props.id)}
@@ -181,7 +192,12 @@ function PostMenu(props) {
         </div>
         <CustomPopup onClose={popupCloseHandler} show={visibility}>
           <h3>Log in to complete action</h3>
-          <button className="p-2 bg-slate-300 mt-1 rounded-md" onClick={logfrompopup}>Log in </button>
+          <button
+            className="p-2 bg-slate-300 mt-1 rounded-md"
+            onClick={logfrompopup}
+          >
+            Log in{" "}
+          </button>
         </CustomPopup>
       </div>
     </div>
